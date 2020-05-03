@@ -18,19 +18,25 @@ def imprimir(lista):
 """Punto 3"""
 def generador(listA, n):
     R = []
-    t = random.sample(listA, n)
-    R.append(t)
+    for i in listA:
+        R.append(i)
+    R = random.sample(R, n)
     return R
 
 """Punto 5"""
 def combinador(listA, listB):
     R = []
-    a = random.sample(listA, len(listA))
-    b = random.sample(listB, len(listB))
-    c = a+b
-    d = random.sample(c, len(c))
-    R.append(d)
+    for i in listA:
+        R.append(i)
+    for i in listB:
+        R.append(i)
+    R = random.sample(R, len(R))
     return R
+
+"""Punto 9"""
+def loteria():
+    for i in range(10):
+        random.choice(range(10))
 
 # -----Principal----- #
 
@@ -70,8 +76,12 @@ juego = combinador(cartas, premium)
 
 # 7
 sobre_uno = generador(juego, 5)
-
 sobre_dos = generador(juego, 5)
-
 sobre_tres = generador(juego, 5)
+
+# 8
+paquete = combinador(sobre_uno, sobre_dos)+sobre_tres
+
+
+
 
