@@ -8,8 +8,10 @@ Created on Sat May  2 00:04:54 2020
 
 import random
 
+
 # -----Funciones----- #
 
+# 13
 def combinar(ponderado, simbolos):
     baraja = {} 
     for element in simbolos:    
@@ -34,8 +36,34 @@ def revolver(combinatoria):
             baraja[key+element] = ponderado[key]
     return baraja
 
+# 14
+def revolver2(combinatoria):
+    combi = combinatoria.copy()
+    llaves = []
+    for i in combinatoria:
+        llaves.append(i)
+    llaves = random.sample(llaves, len(llaves))
+    baraja = {}
+    for element in llaves:
+        for value in combi:
+            if value[0] == element[0]:
+                baraja[element] = combi[value]
+            elif value == 1 and element[0] == "A":
+                baraja[element] = combi[value]
+
+    return baraja
+
+
+def generador(listA, n):
+    R = []
+    for i in listA:
+        R.append(i)
+    R = random.sample(R, n)
+    return R
 
 # -----Principal----- #
+
+# 11
 ponderado = {"A": [1],
              "2": [2],
              "3": [3],
@@ -49,11 +77,14 @@ ponderado = {"A": [1],
              "Q": [10],
              "K": [10]}
 
+# 12
 simbolos = ["C", "D", "T", "P"]
 
+# 13
 combinatoria = combinar(ponderado, simbolos)
 print(combinatoria)
 
-cartas_jugador = revolver(combinatoria)
-
+# 14 - 15
+cartas_jugador = revolver2(combinatoria)
+cartas_tallador = revolver2(combinatoria)
 print (cartas_jugador)
